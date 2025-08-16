@@ -10,4 +10,8 @@
     <ProjectReference Include="..\Suportify.Domain\Suportify.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Cadastros\" />
+  </ItemGroup>
+
 </Project>

@@ -12,3 +12,8 @@ export interface IUsuario {
 }
 
 export type UsuarioDto = Partial<IUsuario>;
+
+
+const test: IUsuario = {
+  Id:  "est"
+}
