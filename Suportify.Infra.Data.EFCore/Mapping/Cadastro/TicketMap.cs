@@ -18,7 +18,6 @@ namespace Suportify.Infra.Data.EFCore.Mapping.Cadastro
             builder.Property(x => x.ResponsavelId).HasMaxLength(64);
             builder.Property(x => x.Protocolo).HasMaxLength(15);
             builder.Property(x => x.Titulo).HasMaxLength(30);
-            builder.Property(x => x.Descricao).HasMaxLength(300);
             builder.Property(x => x.SlaHoras);
             builder.Property(x => x.DataCriacao).HasColumnType("datetime2");
             builder.Property(x => x.DataFechamento).HasColumnType("datetime2");
@@ -33,9 +32,13 @@ namespace Suportify.Infra.Data.EFCore.Mapping.Cadastro
                 .WithOne()
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder.HasOne(x => x.Resposanvel)
+            builder.HasOne(x => x.Responsavel)
                 .WithMany()
                 .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasMany(x => x.Comentarios)
+                .WithOne()
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

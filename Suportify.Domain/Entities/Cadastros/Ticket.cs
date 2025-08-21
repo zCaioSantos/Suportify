@@ -10,42 +10,35 @@ namespace Suportify.Domain.Entities.Cadastros
         public string? ResponsavelId { get; private set; }
         public string Protocolo { get; private set; }
         public string Titulo { get; private set; }
-        public string Descricao { get; private set; }  
         public int SlaHoras { get; private set; }
         public DateTime DataCriacao { get; private set; }
         public DateTime? DataFechamento { get; private set; }
         public eTicketStatus Status { get; private set; }
+        
+        public List<Comentario> Comentarios  { get; set; } = new List<Comentario>();
 
-
-        public virtual Usuario Cliente { get; private set; }
-        public virtual Usuario Resposanvel { get; private set; }
+        public virtual Usuario Cliente { get; set; }
+        public virtual Usuario Responsavel { get; set; }
 
 
 
         public Ticket() { }
 
 
-        public Ticket(string? id, string clienteId, string protocolo, string titulo, string descricao, int slaHoras)
+        public Ticket(string? id, string clienteId, string protocolo, string titulo, int slaHoras)
         {
             Id = string.IsNullOrWhiteSpace(id) ? Guid.NewGuid().ToString() : id;
             ClienteId = clienteId;
             Protocolo = protocolo;
             SlaHoras = slaHoras;
+            Titulo = titulo;
             DataCriacao = DateTime.Now;
             Status = eTicketStatus.Pendente;
-
-
-            Alterar(titulo, descricao);
+            
         }
 
 
         
-        public void Alterar(string titulo, string descricao)
-        {
-            Titulo = titulo.Trim();
-            Descricao = descricao.Trim();
-        }
-
 
         public void AtribuirResponsavel(string responsavelId)
         {
