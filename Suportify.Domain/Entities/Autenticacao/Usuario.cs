@@ -16,6 +16,10 @@ namespace Suportify.Domain.Entities.Autenticacao
         public string? CodigoRecuperacaoSenha { get; private set; }
         public DateTime? DataExpiracaoCodigo { get; private set; }
         public bool Ativo { get; private set; }
+        
+        
+        
+        public virtual Organizacao Organizacao { get; set; }
 
 
 
