@@ -1,4 +1,6 @@
-﻿namespace Suportify.Domain.Entities.Autenticacao
+﻿using Suportify.Domain.Enums;
+
+namespace Suportify.Domain.Entities.Autenticacao
 {
     public class Usuario
     {
@@ -6,7 +8,7 @@
         public string Email { get; private set; }
         public string Nome { get; private set; }
         public string Senha { get; private set; }
-        public PerfilUsuario Perfil { get; private set; }
+        public ePerfilUsuario Perfil { get; private set; }
         public string? Foto { get; private set; }
         public string? Token { get; private set; }
         public DateTime? ExpiracaoToken { get; private set; }
@@ -22,7 +24,7 @@
         {
         }
 
-        public Usuario(string? id, string email, string nome, string? foto, PerfilUsuario perfil)
+        public Usuario(string? id, string email, string nome, string? foto, ePerfilUsuario perfil)
         {
             Id = string.IsNullOrWhiteSpace(id) ? Guid.NewGuid().ToString() : id;
 
@@ -34,7 +36,7 @@
 
 
         #region Metodos Publicos
-        public void Alterar(string email, string nome, string? foto, PerfilUsuario perfil, bool ativo)
+        public void Alterar(string email, string nome, string? foto, ePerfilUsuario perfil, bool ativo)
         {
             Email = email.Trim();
             Nome = nome.Trim();

@@ -1,4 +1,5 @@
 ﻿using Suportify.Domain.Entities.Autenticacao;
+using Suportify.Domain.Enums;
 
 namespace Suportify.Domain.Dtos.Autenticacao
 {
@@ -8,7 +9,7 @@ namespace Suportify.Domain.Dtos.Autenticacao
         public required string Email { get; set; }
         public required string Nome { get; set; }
         public string? Senha { get; set; }
-        public required PerfilUsuario Perfil { get; set; }
+        public required ePerfilUsuario Perfil { get; set; }
         public string? Foto { get; set; }
         public string? Token { get; set; }
         public DateTime? ExpiracaoToken { get; set; }
