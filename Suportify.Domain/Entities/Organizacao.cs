@@ -11,7 +11,7 @@ public class Organizacao
     public string Endereco { get; private set; }
     public string Telefone { get; private set; }
     public string EmailContato { get; private set; }
-    public Boolean Ativo { get; private set; }
+    public bool Ativo { get; private set; }
     public DateTime DataCriacao { get; private set; }
     
     public required virtual List<Usuario> Usuarios { get; set; } = new List<Usuario>();
@@ -22,29 +22,25 @@ public class Organizacao
     public Organizacao(){}
     
     
-    public Organizacao(string? id, string nome, string cnpj, string endereco, string telefone, string email, Boolean ativo, DateTime dataCriacao)
+    public Organizacao(string? id, string nome, string cnpj, string endereco, string telefone, string email)
     {
         Id = id;
-        Nome = nome;
         Cnpj = cnpj;
-        Endereco = endereco;
-        Telefone = telefone;
-        EmailContato = email;
         Ativo = true;
         DataCriacao = DateTime.Now;
-        Alterar(nome, endereco, telefone, email, ativo);
+        Alterar(nome, endereco, telefone, email);
+
     }
 
     
-    public void Alterar(string nome, string endereco, string telefone, string email, Boolean ativo)
+    public void Alterar(string nome, string endereco, string telefone, string email)
     {
         Nome = nome;
         Endereco = endereco;
         Telefone = telefone;
         EmailContato = email;
-        Ativo = ativo;
-        Validar(nome, endereco, telefone, email);
-        Formatar(nome, endereco, telefone, email);
+        Formatar();
+        Validar();
     }
 
     
@@ -60,21 +56,21 @@ public class Organizacao
     }
 
     
-    public void Validar(string nome, string endereco, string telefone, string email)
+    public void Validar()
     {
-        if (!string.IsNullOrEmpty(nome)) throw new Exception("Nome da organização é obrigatório");
-        if (!string.IsNullOrEmpty(endereco)) throw new Exception("Endereço da organização é obrigatório");
-        if (!string.IsNullOrEmpty(email)) throw new Exception("Email de contato da organização é obrigatório");
-        if (!string.IsNullOrEmpty(telefone)) throw new Exception("Telefone da organização é obrigatório");
+        if (string.IsNullOrEmpty(Nome)) throw new Exception("Nome da organização é obrigatório");
+        if (string.IsNullOrEmpty(Endereco)) throw new Exception("Endereço da organização é obrigatório");
+        if (string.IsNullOrEmpty(EmailContato)) throw new Exception("Email de contato da organização é obrigatório");
+        if (string.IsNullOrEmpty(Telefone)) throw new Exception("Telefone da organização é obrigatório");
     }
 
     
-    public void Formatar(string nome, string endereco, string telefone, string email)
+    public void Formatar()
     {
-        nome.Trim();
-        endereco.Trim();
-        telefone.Trim();
-        email.Trim();
+        Nome = Nome.Trim();
+        Endereco = Endereco.Trim();
+        Telefone = Telefone.Trim();
+        EmailContato = EmailContato.Trim();
     }
     
     
