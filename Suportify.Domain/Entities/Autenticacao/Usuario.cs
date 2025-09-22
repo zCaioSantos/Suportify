@@ -5,6 +5,7 @@ namespace Suportify.Domain.Entities.Autenticacao
     public class Usuario
     {
         public string Id { get; private set; }
+        public string OrganizacaoID { get; private set; }
         public string Email { get; private set; }
         public string Nome { get; private set; }
         public string Senha { get; private set; }
