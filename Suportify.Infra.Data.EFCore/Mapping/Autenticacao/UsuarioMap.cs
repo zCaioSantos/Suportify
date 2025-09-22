@@ -24,6 +24,10 @@ namespace Suportify.Infra.Data.EFCore.Mapping.Autenticacao
             builder.Property(x => x.CodigoRecuperacaoSenha).HasMaxLength(6);
             builder.Property(x => x.DataExpiracaoCodigo).HasColumnType("datetime2");
             builder.Property(x => x.Ativo).IsRequired();
+
+            builder.HasOne(x => x.Organizacao)
+                .WithMany()
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
